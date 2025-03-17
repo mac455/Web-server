@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>System Logs</title>
+    <style>
+        /* Modern Color Palette */
+        :root {
+            --primary: #4F46E5;
+            --primary-hover: #4338CA;
+            --secondary: #10B981;
+            --secondary-hover: #059669;
+            --danger: #EF4444;
+            --danger-hover: #DC2626;
+            --dark: #1F2937;
+            --darker: #111827;
+            --light: #F9FAFB;
+            --gray: #6B7280;
+            --light-gray: #E5E7EB;
+            --accent: #8B5CF6;
+            --accent-hover: #7C3AED;
+        }
+        
+        body { 
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--darker);
+            color: var(--light);
+            margin: 0; 
+            padding: 2rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        h2 {
+            color: var(--light);
+            margin-bottom: 1.5rem;
+            font-size: 1.8rem;
+            font-weight: 600;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1000px;
+            background: var(--dark);
+            padding: 2rem;
+            border-radius: 1rem;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .log-box {
+            background: #0F172A;
+            color: var(--light-gray);
+            padding: 1.5rem;
+            border-radius: 0.5rem;
+            max-height: 500px;
+            overflow-y: auto;
+            font-family: 'Consolas', 'Monaco', monospace;
+            white-space: pre-wrap;
+            font-size: 0.9rem;
+            line-height: 1.5;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .btn-container {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 1.5rem;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 0.75rem 1.5rem;
+            font-size: 0.95rem;
+            border: none;
+            border-radius: 0.5rem;
+            cursor: pointer;
+            text-decoration: none;
+            text-align: center;
+            transition: all 0.3s ease;
+            font-weight: 500;
+            margin: 0.5rem;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .btn-download { 
+            background: var(--primary); 
+            color: white; 
+        }
+        
+        .btn-download:hover { 
+            background: var(--primary-hover); 
+        }
+
+        .btn-back { 
+            background: var(--gray); 
+            color: white; 
+        }
+        
+        .btn-back:hover { 
+            background: #4B5563; 
+        }
+
+        .btn-delete { 
+            background: var(--danger); 
+            color: white; 
+        }
+        
+        .btn-delete:hover { 
+            background: var(--danger-hover); 
+        }
+        
+        .admin-only {
+            opacity: 0.7;
+            cursor: not-allowed;
+        }
+        
+        .alert {
+            position: fixed;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            padding: 1rem 1.5rem;
+            background-color: var(--danger);
+            color: var(--light);
+            border-radius: 0.5rem;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+            z-index: 1000;
+            display: none;
+            animation: fadeIn 0.3s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translate(-50%, -20px); }
+            to { opacity: 1; transform: translate(-50%, 0); }
+        }
+
+        /* Responsive design */
+        @media (max-width: 768px) {
+            .container {
+                width: 95%;
+                padding: 1.5rem;
+            }
+            
+            .btn-container {
+                flex-direction: column;
+            }
+            
+            .btn {
+                width: 100%;
+                margin: 0.5rem 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div id="permissionAlert" class="alert">
+        You do not have permission to perform this action. Only administrators can access this feature.
+    </div>
+    
+    <h2>Activity Logs</h2>
+    <div class="container">
+        <div class="btn-container">
+            {% if session['role'] == 'admin' %}
+                <a href="{{ url_for('routes.download_logs') }}" class="btn btn-download">Download Logs</a>
+            {% else %}
+                <button class="btn btn-download admin-only" onclick="showPermissionAlert()">Download Logs</button>
+            {% endif %}
+            
+            <a href="{{ url_for('routes.dashboard') }}" class="btn btn-back">Back to Dashboard</a>
+            
+            {% if session['role'] == 'admin' %}
+                <form action="{{ url_for('routes.clear_logs') }}" method="post">
+                    <button type="submit" class="btn btn-delete">Clear Logs</button>
+                </form>
+            {% else %}
+                <button class="btn btn-delete admin-only" onclick="showPermissionAlert()">Clear Logs</button>
+            {% endif %}
+        </div>
+
+        <div class="log-box">
+            {% for log in logs %}
+                {{ log }}<br>
+            {% endfor %}
+        </div>
+    </div>
+    
+    <script>
+        function showPermissionAlert() {
+            const alert = document.getElementById('permissionAlert');
+            alert.style.display = 'block';
+            
+            // Hide the alert after 3 seconds
+            setTimeout(function() {
+                alert.style.display = 'none';
+            }, 3000);
+        }
+    </script>
+</body>
+</html>

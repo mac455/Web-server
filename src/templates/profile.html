@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Profile</title>
+    <style>
+        /* Modern Color Palette */
+        :root {
+            --primary: #4F46E5;
+            --primary-hover: #4338CA;
+            --secondary: #10B981;
+            --secondary-hover: #059669;
+            --danger: #EF4444;
+            --danger-hover: #DC2626;
+            --dark: #1F2937;
+            --darker: #111827;
+            --light: #F9FAFB;
+            --gray: #6B7280;
+            --light-gray: #E5E7EB;
+            --accent: #8B5CF6;
+            --accent-hover: #7C3AED;
+        }
+        
+        /* General styling */
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, var(--darker) 0%, var(--dark) 100%);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        /* Profile container */
+        .profile-container {
+            background: var(--light);
+            padding: 2.5rem;
+            border-radius: 1rem;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 450px;
+            text-align: center;
+        }
+
+        /* Heading */
+        .profile-container h2 {
+            margin-bottom: 1.5rem;
+            color: var(--dark);
+            font-size: 1.8rem;
+            font-weight: 600;
+        }
+
+        /* Profile details */
+        .profile-container p {
+            font-size: 1rem;
+            color: var(--gray);
+            margin: 1rem 0;
+            text-align: left;
+            padding: 0.75rem 1rem;
+            background-color: rgba(79, 70, 229, 0.05);
+            border-radius: 0.5rem;
+            border: 1px solid rgba(79, 70, 229, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .profile-container p:hover {
+            background-color: rgba(79, 70, 229, 0.1);
+            transform: translateY(-2px);
+        }
+
+        .profile-container p strong {
+            color: var(--primary);
+            font-weight: 600;
+            display: block;
+            margin-bottom: 0.25rem;
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        /* Button */
+        .back-button {
+            display: inline-block;
+            text-decoration: none;
+            color: var(--light);
+            background-color: var(--primary);
+            padding: 0.75rem 1.5rem;
+            border-radius: 0.5rem;
+            margin-top: 1.5rem;
+            transition: all 0.3s ease;
+            font-weight: 500;
+            border: none;
+            cursor: pointer;
+            font-size: 0.95rem;
+        }
+
+        .back-button:hover {
+            background-color: var(--primary-hover);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Responsive design */
+        @media (max-width: 500px) {
+            .profile-container {
+                width: 90%;
+                padding: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="profile-container">
+        <h2>User Profile</h2>
+        
+        <p>
+            <strong>Username</strong>
+            {{ user }}
+        </p>
+        
+        <p>
+            <strong>Role</strong>
+            {{ role }}
+        </p>
+        
+        <p>
+            <strong>Last Login</strong>
+            {{ last_login }}
+        </p>
+        
+        <a href="{{ url_for('routes.dashboard') }}" class="back-button">Back to Dashboard</a>
+    </div>
+</body>
+</html>

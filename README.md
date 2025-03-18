@@ -1,8 +1,13 @@
 # Security Server
 
 A  web application for monitoring and logging user activity with role-based access control. This Flask-based security server provides a secure platform for tracking user actions, managing logs, and implementing different permission levels for administrators and standard users.
+## Demo - User
 
-![Security Server Screenshot](https://via.placeholder.com/800x400?text=Security+Server+Dashboard)
+![JohnDoeSecurityServer-ezgif com-video-to-gif-converter](https://github.com/user-attachments/assets/b1845ff1-81fe-40dd-9785-77c561781904)
+
+## Demo - Admin
+![Admin_security_server-ezgif com-video-to-gif-converter](https://github.com/user-attachments/assets/6645982a-e37c-4222-909b-35b758a9ac4e)
+
 
 ##  Features
 
@@ -37,7 +42,6 @@ A  web application for monitoring and logging user activity with role-based acce
 - Protection against unauthorized endpoint access
 
 
-
 ## User Roles and Permissions
 
 ### Admin User
@@ -51,7 +55,7 @@ A  web application for monitoring and logging user activity with role-based acce
 - Can view logs but cannot download or clear them
 - Cannot access admin-only sections
 - Receives visual feedback when attempting unauthorized actions
-
+  
 
 ## Logging System
 

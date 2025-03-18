@@ -52,9 +52,7 @@ A  web application for monitoring and logging user activity with role-based acce
 - Cannot access admin-only sections
 - Receives visual feedback when attempting unauthorized actions
 - 
-##Screenshots - User
-###Login page
-![image](https://github.com/user-attachments/assets/c21c1071-7603-4cb8-a231-4855ea604540)
+## Screenshots - User
 
 ### Homepage
 ![image](https://github.com/user-attachments/assets/8db7a04e-e074-41f4-8ffa-012432b4a658)

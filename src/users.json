@@ -1,0 +1,42 @@
+{
+    "admin": {
+        "password": "pass751",
+        "role": "admin",
+        "email": "admin@example.com",
+        "created_at": "2025-03-18 07:52:12",
+        "last_login": "2025-03-18 08:11:13",
+        "status": "active"
+    },
+    "johnDoe": {
+        "password": "pass3",
+        "role": "Standard User",
+        "email": "user@example.com",
+        "created_at": "2025-03-18 07:52:12",
+        "last_login": "",
+        "status": "active"
+    },
+    "Sarah": {
+        "password": "12345",
+        "role": "Standard User",
+        "email": "Sdoe@gmail.com",
+        "created_at": "2025-03-18 08:04:00",
+        "last_login": "",
+        "status": "active"
+    },
+    "SarahDoe": {
+        "password": "Sarah234",
+        "role": "Standard User",
+        "email": "Sdoe@gmail.com",
+        "created_at": "2025-03-18 08:07:34",
+        "last_login": "",
+        "status": "active"
+    },
+    "JaneDoe": {
+        "password": "pass3478",
+        "role": "Standard User",
+        "email": "Doe@gmail.com",
+        "created_at": "2025-03-18 08:16:17",
+        "last_login": "",
+        "status": "active"
+    }
+}

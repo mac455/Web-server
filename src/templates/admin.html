@@ -50,21 +50,21 @@
         }
 
         h1 {
-            color: var(--accent);
+            color: var(--light);
             margin-bottom: 1.5rem;
             font-size: 2rem;
             font-weight: 600;
         }
 
         h2 {
-            color: var(--secondary);
+            color: var(--light);
             font-size: 1.5rem;
             font-weight: 500;
             margin-top: 0;
         }
 
         p {
-            color: var(--gray);
+            color: var(--light);
             line-height: 1.6;
             margin-bottom: 1.5rem;
         }
@@ -162,7 +162,9 @@
         
         <div class="section">
             <h2>User Management</h2>
-            <p>This section would contain user management features (not implemented yet).</p>
+            <p>Manage users, create new accounts, and control access permissions.</p>
+            <a href="{{ url_for('routes.manage_users') }}" class="btn">View Users</a>
+            <a href="{{ url_for('routes.add_user') }}" class="btn">Add New User</a>
         </div>
         
         <a href="{{ url_for('routes.dashboard') }}" class="btn btn-back">Back to Dashboard</a>
